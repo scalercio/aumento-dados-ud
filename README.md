@@ -6,4 +6,4 @@ First you need to have a UD file to augment
 Then you can generate artificial data by running '**sh augment_single.sh**'. File parameters are:
 - **infile**: UD file to augment
 - **outfile**: Name of the output file
-- **operation**: rotate
+- **operation**: obl or advcl

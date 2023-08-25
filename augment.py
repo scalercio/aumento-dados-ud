@@ -1,12 +1,12 @@
 # encoding: utf-8
 
 """
-Created by Gözde Gül Şahin
-20.05.2018
+Created by Arthur Scalercio
+20.06.2023
 Code to play with augmentation options and test on a single file
 """
 
-__author__ = 'Gözde Gül Şahin'
+__author__ = 'Arthur Scalercio'
 from IO import conllud
 from SP import augmenter
 import codecs
@@ -19,7 +19,7 @@ def main():
     parser.add_argument('-outfile', type=str, default='./data/tubarao-shifted.conllu', help='Output file')
     parser.add_argument('-maxrot', type=int, default=3, help='Maximum number of rotation operations per sentence')
     parser.add_argument('-prob', type=float, default=0.7, help='Probability of the augmentation operation')
-    parser.add_argument('-operation', type=str, default='rotate', help='rotate|crop')
+    parser.add_argument('-operation', type=str, default='obl', help='obl|advcl')
     args = parser.parse_args()
     # Rotates and crops with given probabilities and saves the results
     augment(args)
@@ -35,21 +35,20 @@ def augment(args):
     ud_reader = conllud.conllUD(inFile)
     ud_sents = ud_reader.sents
     loi = [u"nsubj", u"advmod", u"iobj", u"obj", u"obl", u"advcl", u"aux", u"punct", u"cop", u"mark", u"conj", u"csubj", u"xcomp", u"expl"]
-    pl = u"obl"
+    pl = operation
     # for predicate
     multilabs = [u"case", u"fixed", u"flat"]
     fout = codecs.open(outfile,'w','utf-8')
 
-    if operation=="rotate":
-        for s in ud_sents:
-            rotator = augmenter.rotator(s, aloi=loi, pl=pl, multilabs=multilabs, prob=1.0)
-            augSents = rotator.rotate(maxshuffle=max_rotate)
-            for augsent in augSents:
-                for row in augsent:
-                    line = u"\t".join(row)
-                    fout.write(line)
-                    fout.write(u"\n")
+    for s in ud_sents:
+        rotator = augmenter.rotator(s, aloi=loi, pl=pl, multilabs=multilabs, prob=1.0)
+        augSents = rotator.rotate(maxshuffle=max_rotate)
+        for augsent in augSents:
+            for row in augsent:
+                line = u"\t".join(row)
+                fout.write(line)
                 fout.write(u"\n")
+            fout.write(u"\n")
     
     fout.close()
 

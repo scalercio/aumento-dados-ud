@@ -3,10 +3,10 @@ export PYTHONIOENCODING=utf-8
 
 echo "Testing rotation"
 python augment.py \
-   -infile "./data/tubarao.conllu" \
-   -outfile "./data/tubarao-shifted-obl-final.conllu" \
+   -infile "./data/leopardo-ok.conllu" \
+   -outfile "./data/leopardo-shifted-obl-final.conllu" \
    -maxrot 3 \
    -prob 0.3 \
-   -operation "rotate"
+   -operation "obl"
 
 echo "Done, check your output files"
