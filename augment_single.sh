@@ -6,7 +6,6 @@ python augment.py \
    -infile "./data/leopardo-ok.conllu" \
    -outfile "./data/leopardo-shifted-obl-final.conllu" \
    -maxrot 3 \
-   -prob 0.3 \
    -operation "obl"
 
 echo "Done, check your output files"

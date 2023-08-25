@@ -18,7 +18,6 @@ def main():
     parser.add_argument('-infile', type=str, default='./data/tubarao.conllu', help='UD file to augment')
     parser.add_argument('-outfile', type=str, default='./data/tubarao-shifted.conllu', help='Output file')
     parser.add_argument('-maxrot', type=int, default=3, help='Maximum number of rotation operations per sentence')
-    parser.add_argument('-prob', type=float, default=0.7, help='Probability of the augmentation operation')
     parser.add_argument('-operation', type=str, default='obl', help='obl|advcl')
     args = parser.parse_args()
     # Rotates and crops with given probabilities and saves the results

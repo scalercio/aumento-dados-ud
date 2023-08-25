@@ -67,7 +67,7 @@ class chunker:
         :return: root chunk
         """
         rtok = None
-        print(' '.join(self.sent.tokenWords))
+        #print(' '.join(self.sent.tokenWords))
         for tok in self.sent.tokens:
             #print(tok.index)
             #print(tok.word)
@@ -249,9 +249,6 @@ class chunker:
                             break
                 if not brother_chunk and (xcomp_brother_ch != None):
                     chunks.append(xcomp_brother_ch)
-            #print(self.sanity_check(chunks))
-            #for t in chunks:
-            #    print(t.type,"1")
         if self.sanity_check(chunks):
             chunks = sorted(chunks, key=chunk.min)
             return chunks
