@@ -50,18 +50,7 @@ def augment(args):
                     fout.write(line)
                     fout.write(u"\n")
                 fout.write(u"\n")
-    '''
-    elif operation=="crop":
-        for s in ud_sents:
-            cropper = augmenter.cropper(s, aloi=loi, pl=pl, multilabs=multilabs, prob=1.0)
-            augSents = cropper.crop()
-            for augsent in augSents:
-                for row in augsent:
-                    line = u"\t".join(row)
-                    fout.write(line)
-                    fout.write(u"\n")
-                fout.write(u"\n")
-    '''
+    
     fout.close()
 
 def create_file(args):
