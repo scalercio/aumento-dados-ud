@@ -52,13 +52,14 @@ def augment(args):
     fout.close()
 
 def create_file(args):
-    print("\n\n")
     outfile = args.outfile    
     ud_reader = conllud.conllUD(outfile)
-    for s in ud_reader.sents:
-        line = ' '.join(s.tokenWords)
-        line = line.replace(", ,", ",").replace(", .", ".").replace(", :", ":").replace(", ;", ";").replace(", !", "!").replace(", ?", "?")
-        print(line)
+    with open(outfile.replace("conllu","txt"), "w") as f:
+        for s in ud_reader.sents:
+            line = ' '.join(s.tokenWords)
+            line = line.replace(", ,", ",").replace(", .", ".").replace(", :", ":").replace(", ;", ";").replace(", !", "!").replace(", ?", "?")
+            #print(line)
+            f.write(line+"\n")
 
 if __name__ == "__main__":
     main()
